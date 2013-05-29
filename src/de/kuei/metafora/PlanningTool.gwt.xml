@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='planningtool'>
+  <!-- Inherit the core Web Toolkit stuff.                        -->
+  <inherits name='com.google.gwt.user.User'/>
+
+  <!-- Inherit the default GWT style sheet.  You can change       -->
+  <!-- the theme of your GWT application by uncommenting          -->
+  <!-- any one of the following lines.                            -->
+  <inherits name='com.google.gwt.user.theme.standard.Standard'/>
+  <!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
+  <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
+
+  <!-- Other module inherits                                      -->
+  	<!-- Inherit gwt-dnd support                   -->
+	<inherits name='com.allen_sauer.gwt.dnd.gwt-dnd'/>
+	
+	<inherits name='de.novanic.eventservice.GWTEventService'/>
+	
+	<inherits name="com.google.gwt.xml.XML" />
+	
+	<!-- Internationalization -->
+  	<inherits name="com.google.gwt.i18n.I18N"/>
+
+	<!-- English -->
+  	<extend-property name="locale" values="en"/>
+  	<!-- Greek -->
+  	<extend-property name="locale" values="gr"/>
+  	<!-- Hebrew -->
+  	<extend-property name="locale" values="he"/>
+  	<!-- German -->
+  	<extend-property name="locale" values="de"/>
+  	<!-- Spanish -->
+  	<extend-property name="locale" values="es"/>
+  	<!-- Portuguese -->
+  	<extend-property name="locale" values="pt"/>
+  	<!-- Chinese -->
+  	<extend-property name="locale" values="zh"/>
+  	<!-- default value English -->
+  	<set-property-fallback name="locale" value="en"/>
+
+  <!-- Specify the app entry point class.                         -->
+  <entry-point class='de.kuei.metafora.client.PlanningTool'/>
+
+  <!-- Specify the paths for translatable code                    -->
+  <source path='client'/>
+  <source path='shared'/>
+
+</module>

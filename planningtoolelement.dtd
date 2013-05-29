@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- common format describing planning tool nodes -->
+
+<!-- a PlanningToolElement describes exactly one node or one edge -->
+
+<!-- Object as root element -->
+<!ELEMENT object (node|edge|crtl)>
+
+<!-- Description of control messages -->
+<!ELEMENT ctrl (areasize?)>
+<!ATTLIST ctrl graphname CDATA #REQUIRED>
+
+<!-- drawingarea resized event -->
+<!ELEMENT areasize EMPTY>
+<!ATTLIST areasize x CDATA #REQUIRED>
+<!ATTLIST areasize y CDATA #REQUIRED>
+
+<!-- Description of a node  -->
+<!ELEMENT node (graphics, text?, properties)>
+<!ATTLIST node id CDATA #REQUIRED>
+
+<!-- graphics groups graphical informations about this node -->
+<!ELEMENT graphics (bordercolor, position)>
+
+<!-- current border color of the node -->
+<!ELEMENT bordercolor EMPTY>
+<!ATTLIST bordercolor value CDATA #REQUIRED>
+
+<!-- absolut position on the draw area -->
+<!ELEMENT position EMPTY>
+<!ATTLIST position x CDATA #REQUIRED>
+<!ATTLIST position y CDATA #REQUIRED>
+
+<!-- optional text description of the node -->
+<!ELEMENT text EMPTY>
+<!ATTLIST text value CDATA #REQUIRED>
+
+<!-- properties groups all non graphical information of the node -->
+<!ELEMENT properties (pictureurl?, tool?, categorie, name)>
+
+<!-- url to the node picture -->
+<!ELEMENT pictureurl EMPTY>
+<!ATTLIST pictureurl value CDATA #REQUIRED>
+
+<!-- url to the tool -->
+<!ELEMENT tool EMPTY>
+<!ATTLIST tool value CDATA #REQUIRED>
+
+<!-- categorie of the node -->
+<!ELEMENT categorie EMPTY>
+<!ATTLIST categorie value CDATA #REQUIRED>
+
+<!-- node name, this implies pictureurl -->
+<!ELEMENT name EMPTY>
+<!ATTLIST name value CDATA #REQUIRED>
+
+<!-- edge describes a edge between two nodes -->
+<!ELEMENT edge (start, end, type, label?)>
+<!ATTLIST edge id CDATA #REQUIRED>
+
+<!-- node id of the node where the edge starts -->
+<!ELEMENT start EMPTY>
+<!ATTLIST start value CDATA #REQUIRED>
+
+<!-- node id of the node where the edge ends -->
+<!ELEMENT end EMPTY>
+<!ATTLIST end value CDATA #REQUIRED>
+
+<!-- type of the edge, this value defines color and look of the edge -->
+<!ELEMENT type EMPTY>
+<!ATTLIST type value CDATA #REQUIRED>
+
+<!-- a label which describes this edge -->
+<!ELEMENT label EMPTY>
+<!ATTLIST label value CDATA #REQUIRED>

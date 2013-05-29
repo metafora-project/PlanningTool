@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- common format describing planning tool nodes -->
+
+<!-- This dtd describes a complete planning tool graph compatible to the planning tool elements and the common format -->
+
+<!-- Root node. A graph have a name and consists of different planning tool objects which can be nodes or edges -->
+<!ELEMENT graph (object*)>
+<!ATTLIST graph name CDATA #REQUIRED>
+
+<!-- the objects are planningtool elements supplemented with users information compatible to the common format -->
+<!ELEMENT object ((node|edge), user*)>
+
+<!-- user description from common format -->
+<!ELEMENT user EMPTY>
+<!ATTLIST user id CDATA #REQUIRED>
+<!ATTLIST user ip CDATA #IMPLIED>
+<!ATTLIST user role (originator | receiver) #REQUIRED>
+
+
+<!-- Description of a node  -->
+<!ELEMENT node (graphics, text?, properties)>
+<!ATTLIST node id CDATA #REQUIRED>
+
+<!-- graphics groups graphical informations about this node -->
+<!ELEMENT graphics (bordercolor, position)>
+
+<!-- current border color of the node -->
+<!ELEMENT bordercolor EMPTY>
+<!ATTLIST bordercolor value CDATA #REQUIRED>
+
+<!-- absolut position on the draw area -->
+<!ELEMENT position EMPTY>
+<!ATTLIST position x CDATA #REQUIRED>
+<!ATTLIST position y CDATA #REQUIRED>
+
+<!-- optional text description of the node -->
+<!ELEMENT text EMPTY>
+<!ATTLIST text value CDATA #REQUIRED>
+
+<!-- properties groups all non graphical information of the node -->
+<!ELEMENT properties (pictureurl?, tool?, categorie, name)>
+
+<!-- url to the node picture -->
+<!ELEMENT pictureurl EMPTY>
+<!ATTLIST pictureurl value CDATA #REQUIRED>
+
+<!-- url to the tool -->
+<!ELEMENT tool EMPTY>
+<!ATTLIST tool value CDATA #REQUIRED>
+
+<!-- categorie of the node -->
+<!ELEMENT categorie EMPTY>
+<!ATTLIST categorie value CDATA #REQUIRED>
+
+<!-- node name, this implies pictureurl -->
+<!ELEMENT name EMPTY>
+<!ATTLIST name value CDATA #REQUIRED>
+
+<!-- edge describes a edge between two nodes -->
+<!ELEMENT edge (start, end, type, label?)>
+<!ATTLIST node id CDATA #REQUIRED>
+
+<!-- node id of the node where the edge starts -->
+<!ELEMENT start EMPTY>
+<!ATTLIST start value CDATA #REQUIRED>
+
+<!-- node id of the node where the edge ends -->
+<!ELEMENT end EMPTY>
+<!ATTLIST end value CDATA #REQUIRED>
+
+<!-- type of the edge, this value defines color and look of the edge -->
+<!ELEMENT type EMPTY>
+<!ATTLIST type value CDATA #REQUIRED>
+
+<!-- a label which describes this edge -->
+<!ELEMENT label EMPTY>
+<!ATTLIST label value CDATA #REQUIRED>
+
+
