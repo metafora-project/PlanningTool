@@ -11,8 +11,8 @@ public class DocUploadService {
 
 	public static String tomcatserver = "https://metafora.ku-eichstaett.de";
 	public static String server = "metafora.ku-eichstaett.de";
-	public static String user = "admin";
-	public static String password = "didPfCDB";
+	public static String user = "user";
+	public static String password = "password";
 
 	private static final int port = 5984;
 
