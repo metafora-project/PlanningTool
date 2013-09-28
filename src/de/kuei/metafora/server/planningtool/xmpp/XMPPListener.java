@@ -263,6 +263,7 @@ public class XMPPListener implements PacketListener {
 							String groupId = null;
 							String challengeId = null;
 							String challengeName = null;
+							String autosave = null;
 
 							NodeList properties = doc
 									.getElementsByTagName("property");
@@ -296,6 +297,10 @@ public class XMPPListener implements PacketListener {
 								} else if (n.toLowerCase().equals(
 										"challenge_name")) {
 									challengeName = property.getAttributes()
+											.getNamedItem("value")
+											.getTextContent();
+								} else if (n.toLowerCase().equals("autosave")) {
+									autosave = property.getAttributes()
 											.getNamedItem("value")
 											.getTextContent();
 								} else {
@@ -397,10 +402,20 @@ public class XMPPListener implements PacketListener {
 														new NodeEvent(
 																modifyXml, map));
 
-										MessageSendImpl.sendStateSavedLandmark(
-												nodeid, url, map, localUser,
-												homeTool, groupId, challengeId,
-												challengeName);
+										if (autosave != null
+												&& autosave.toLowerCase()
+														.equals("true")) {
+											System.err
+													.println("PlanningTool: XMPPListener.newMessage(): Autosave flag found. Landmark was supressed.");
+										} else {
+											MessageSendImpl
+													.sendStateSavedLandmark(
+															nodeid, url, map,
+															localUser,
+															homeTool, groupId,
+															challengeId,
+															challengeName);
+										}
 									} else {
 										System.err
 												.println("PlanningTool: XMPPListener: Node not found or invalid node category. Message was dropped. \n"
