@@ -2,17 +2,17 @@ package de.kuei.metafora.server.planningtool.mysql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Vector;
 
 public class MysqlInitConnector {
 
 	private static String url = "jdbc:mysql://localhost/metaforainit?useUnicode=true&characterEncoding=UTF-8";
-	private static String user = "meta";
-	private static String password = "didPfM";
+	private static String user = Passwords.initUser;
+	private static String password = Passwords.initPassword;
 
 	private static MysqlInitConnector instance = null;
 
@@ -76,11 +76,14 @@ public class MysqlInitConnector {
 
 		System.err.println("Loading data from metaforainit...");
 
-		PreparedStatement pst;
+		String sql = "SELECT connectionname, channel, alias, user, modul FROM channeldata WHERE modul LIKE '"
+				+ modul + "';";
+
+		Statement stmt;
 		try {
-			pst = connection.prepareStatement("SELECT connectionname, channel, alias, user, modul FROM channeldata WHERE modul LIKE ?");
-			pst.setString(1, modul);
-			ResultSet rs = pst.executeQuery();
+			stmt = connection.createStatement();
+
+			ResultSet rs = stmt.executeQuery(sql);
 
 			if (rs.first()) {
 				do {
@@ -95,16 +98,19 @@ public class MysqlInitConnector {
 			}
 
 			rs.close();
-			pst.close();
+			stmt.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
+		sql = "SELECT connectionname, servername, serverurl, user, password, device, modul FROM serverdata WHERE modul LIKE '"
+				+ modul + "' OR modul IS NULL";
+
 		try {
-			pst = connection.prepareStatement("SELECT connectionname, servername, serverurl, user, password, device, modul FROM serverdata WHERE modul LIKE ? OR modul IS NULL");
-			pst.setString(1, modul);
-			ResultSet rs = pst.executeQuery();
+			stmt = connection.createStatement();
+
+			ResultSet rs = stmt.executeQuery(sql);
 
 			if (rs.first()) {
 				do {
@@ -132,15 +138,19 @@ public class MysqlInitConnector {
 			}
 
 			rs.close();
-			pst.close();
+			stmt.close();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
+		sql = "SELECT `key`, `value` FROM generalModul  WHERE modul LIKE '"
+				+ modul + "' OR modul IS NULL";
+
 		try {
-			pst = connection.prepareStatement("SELECT `key`, `value` FROM generalModul  WHERE modul LIKE ? OR modul IS NULL");
-			pst.setString(1, modul);
-			ResultSet rs = pst.executeQuery();
+			stmt = connection.createStatement();
+
+			ResultSet rs = stmt.executeQuery(sql);
 
 			System.err.println("General:");
 
@@ -157,8 +167,10 @@ public class MysqlInitConnector {
 			}
 
 			rs.close();
-			pst.close();
+			stmt.close();
+
 			connection.close();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
