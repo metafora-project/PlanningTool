@@ -79,7 +79,7 @@ public class MessageSendImpl extends RemoteServiceServlet implements
 			action.getAttributes().getNamedItem("time")
 					.setNodeValue(System.currentTimeMillis() + "");
 			newxml = XMLUtils.documentToString(doc,
-					"http://metafora.ku-eichstaett.de/dtd/commonformat.dtd");
+					StartupServlet.commonformat);
 		} catch (XMLException e) {
 			e.printStackTrace();
 		}
@@ -104,7 +104,7 @@ public class MessageSendImpl extends RemoteServiceServlet implements
 			action.getAttributes().getNamedItem("time")
 					.setNodeValue(System.currentTimeMillis() + "");
 			newxml = XMLUtils.documentToString(doc,
-					"http://metafora.ku-eichstaett.de/dtd/commonformat.dtd");
+					StartupServlet.commonformat);
 		} catch (XMLException e) {
 			e.printStackTrace();
 		}
@@ -127,9 +127,6 @@ public class MessageSendImpl extends RemoteServiceServlet implements
 	 * time="1326909617639"> <actiontype classification="USER_INTERACTION"
 	 * succeeded="UNKNOWN" type="OPEN_MAP"/> <user id="all users with this IP"
 	 * role="controller"/> <object id="default"/> </action>
-	 * 
-	 * http://metafora.ku-eichstaett.de:8081/planningtoolsolo/?locale=en&token=
-	 * 1326910312138
 	 */
 	@Override
 	public void sendToChatCommand(String graphname, String nodeid, String url,
@@ -314,7 +311,7 @@ public class MessageSendImpl extends RemoteServiceServlet implements
 			property2.setAttribute("value", challengeName);
 
 			String xmlXMPPMessage = XMLUtils.documentToString(doc,
-					"http://metafora.ku-eichstaett.de/dtd/commonformat.dtd");
+					StartupServlet.commonformat);
 
 			if (StartupServlet.analysis != null) {
 				StartupServlet.analysis.sendMessage(xmlXMPPMessage);

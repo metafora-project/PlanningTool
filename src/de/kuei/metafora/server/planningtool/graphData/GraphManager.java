@@ -7,6 +7,7 @@ import java.util.Vector;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import de.kuei.metafora.server.planningtool.StartupServlet;
 import de.kuei.metafora.server.planningtool.mysql.MysqlConnector;
 import de.kuei.metafora.server.planningtool.xml.XMLException;
 import de.kuei.metafora.server.planningtool.xml.XMLUtils;
@@ -120,7 +121,7 @@ public class GraphManager {
 		try {
 			String xml = XMLUtils
 					.documentToString(document,
-							"http://metafora.ku-eichstaett.de/dtd/planningtoolgraph.dtd");
+							StartupServlet.planninggraphformat);
 			return xml;
 		} catch (XMLException e) {
 			e.printStackTrace();

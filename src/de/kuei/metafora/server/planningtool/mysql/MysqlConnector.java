@@ -12,7 +12,7 @@ import de.kuei.metafora.server.planningtool.graphData.GraphManager;
 
 public class MysqlConnector {
 
-	public static String url = "jdbc:mysql://metafora.ku-eichstaett.de/metafora?useUnicode=true&characterEncoding=UTF-8";
+	public static String url = "jdbc:mysql://metafora-project.info/metafora?useUnicode=true&characterEncoding=UTF-8";
 	public static String user = "user";
 	public static String password = "password";
 

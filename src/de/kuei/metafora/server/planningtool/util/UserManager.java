@@ -203,7 +203,7 @@ public class UserManager implements UserTimeoutListener {
 			}
 
 			String newxml = XMLUtils.documentToString(doc,
-					"http://metafora.ku-eichstaett.de/dtd/commonformat.dtd");
+					StartupServlet.commonformat);
 
 			// update server data model and get ID
 			String[] elem = XMLMessageTranslator.actionReceived(newxml, map);
@@ -488,7 +488,7 @@ public class UserManager implements UserTimeoutListener {
 			newmap.setAttribute("name", name);
 			String inner = XMLUtils
 					.documentToString(innerXml,
-							"http://metafora.ku-eichstaett.de/dtd/planningtoolelement.dtd");
+							StartupServlet.planningtoolformat);
 			creator.setObject(name, inner);
 
 			creator.addContentProperty("GROUP_ID", groupId);
@@ -533,7 +533,7 @@ public class UserManager implements UserTimeoutListener {
 			newmap.setAttribute("name", name);
 			String inner = XMLUtils
 					.documentToString(innerXml,
-							"http://metafora.ku-eichstaett.de/dtd/planningtoolelement.dtd");
+							StartupServlet.planningtoolformat);
 			creator.setObject(name, inner);
 			creator.addContentProperty("GROUP_ID", groupId);
 			creator.addContentProperty("CHALLENGE_ID", challengeId);

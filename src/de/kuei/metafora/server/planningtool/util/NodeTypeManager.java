@@ -27,7 +27,7 @@ public class NodeTypeManager {
 		return instance;
 	}
 
-	private String urlprefix = "http://metafora.ku-eichstaett.de";
+	private String urlprefix = "http://static.metafora-project.info";
 
 	private Vector<String> languages;
 
@@ -199,7 +199,7 @@ public class NodeTypeManager {
 			properties.appendChild(name);
 			String contentxml = XMLUtils
 					.documentToString(content,
-							"http://metafora.ku-eichstaett.de/dtd/planningtoolelement.dtd");
+							StartupServlet.planningtoolformat);
 			creator.setObject("palette_node_" + index, contentxml);
 
 			creator.addContentProperty("GROUP_ID", groupId);

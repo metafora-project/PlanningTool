@@ -21,13 +21,16 @@ import de.novanic.eventservice.service.registry.user.UserManagerFactory;
 
 public class StartupServlet extends HttpServlet {
 
+	public static String planninggraphformat = "http://static.metafora-project.info/dtd/planningtoolgraph.dtd";
+	public static String commonformat = "http://static.metafora-project.info/dtd/commonformat.dtd";
+	public static String planningtoolformat = "http://static.metafora-project.info/dtd/planningtoolelement.dtd";
 	public static String sending_tool = "PLANNING_TOOL";
 	public static String lasadName = "LASAD";
 	public static boolean logged = true;
 	public static String metafora = "METAFORA";
-	public static String tomcatserver = "https://metaforaserver.ku.de";
-	public static String apache = "http://metaforaserver.ku.de";
-	public static String xmpp = "metaforaserver.ku.de";
+	public static String tomcatserver = "https://metafora-project.de";
+	public static String apache = "http://metafora-project.de";
+	public static String xmpp = "metafora-project.de";
 	public static String reflectionChannel = "analysis";
 
 	public static XmppMUC logger;

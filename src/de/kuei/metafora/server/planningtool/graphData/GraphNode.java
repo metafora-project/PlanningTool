@@ -5,6 +5,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import de.kuei.metafora.server.planningtool.StartupServlet;
 import de.kuei.metafora.server.planningtool.mysql.MysqlConnector;
 import de.kuei.metafora.server.planningtool.xml.XMLException;
 import de.kuei.metafora.server.planningtool.xml.XMLUtils;
@@ -68,13 +69,13 @@ public class GraphNode {
 					node.setAttribute("id", this.id);
 					innerXml = XMLUtils
 							.documentToString(innerdoc,
-									"http://metafora.ku-eichstaett.de/dtd/planningtoolelement.dtd");
+									StartupServlet.planningtoolformat);
 
 					if (init) {
 						object.setAttribute("type", innerXml);
 						this.xml = XMLUtils
 								.documentToString(doc,
-										"http://metafora.ku-eichstaett.de/dtd/commonformat.dtd");
+										StartupServlet.commonformat);
 					} else {
 						Document outer = XMLUtils
 								.parseXMLString(this.xml, true);
@@ -84,7 +85,7 @@ public class GraphNode {
 							obj.setAttribute("type", innerXml);
 							this.xml = XMLUtils
 									.documentToString(outer,
-											"http://metafora.ku-eichstaett.de/dtd/commonformat.dtd");
+											StartupServlet.commonformat);
 						}
 					}
 				}
@@ -200,7 +201,7 @@ public class GraphNode {
 
 				String iXml = XMLUtils
 						.documentToString(inner,
-								"http://metafora.ku-eichstaett.de/dtd/planningtoolelement.dtd");
+								StartupServlet.planningtoolformat);
 				this.innerXml = iXml;
 
 				Document full = XMLUtils.parseXMLString(xml, true);
@@ -211,7 +212,7 @@ public class GraphNode {
 
 					String oxml = XMLUtils
 							.documentToString(full,
-									"http://metafora.ku-eichstaett.de/dtd/commonformat.dtd");
+									StartupServlet.commonformat);
 					this.xml = oxml;
 				}
 			}

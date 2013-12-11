@@ -87,11 +87,11 @@ public class PlanningTool implements EntryPoint {
 	private static String sendingTool = "PLANNING_TOOL";
 	private static String lasadName = "LASAD";
 	private static boolean logged = true;
-	private static String tomcatserver = "https://metaforaserver.ku.de";
+	private static String tomcatserver = "https://metafora-project.de";
 	private static String metafora = "METAFORA";
 	private static String reflectionChannel = "analysis";
-	private static String xmpp = "metaforaserver.ku.de";
-	private static String apache = "http://metaforaserver.ku.de";
+	private static String xmpp = "metafora-project.de";
+	private static String apache = "http://metafora-project.de";
 
 	private static boolean cavillag = false;
 

@@ -5,6 +5,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import de.kuei.metafora.server.planningtool.StartupServlet;
 import de.kuei.metafora.server.planningtool.mysql.MysqlConnector;
 import de.kuei.metafora.server.planningtool.xml.XMLException;
 import de.kuei.metafora.server.planningtool.xml.XMLUtils;
@@ -139,13 +140,13 @@ public class GraphEdge implements Cloneable {
 				}
 				innerXml = XMLUtils
 						.documentToString(innerdoc,
-								"http://metafora.ku-eichstaett.de/dtd/planningtoolelement.dtd");
+								StartupServlet.planningtoolformat);
 
 				object.setAttribute("type", innerXml);
 
 				xml = XMLUtils
 						.documentToString(doc,
-								"http://metafora.ku-eichstaett.de/dtd/commonformat.dtd");
+								StartupServlet.commonformat);
 			}
 		} catch (XMLException e) {
 			e.printStackTrace();
@@ -247,7 +248,7 @@ public class GraphEdge implements Cloneable {
 
 				String iXml = XMLUtils
 						.documentToString(inner,
-								"http://metafora.ku-eichstaett.de/dtd/planningtoolelement.dtd");
+								StartupServlet.planningtoolformat);
 				this.innerXml = iXml;
 
 				Document full = XMLUtils.parseXMLString(xml, true);
@@ -258,7 +259,7 @@ public class GraphEdge implements Cloneable {
 
 					String oxml = XMLUtils
 							.documentToString(full,
-									"http://metafora.ku-eichstaett.de/dtd/commonformat.dtd");
+									StartupServlet.commonformat);
 					this.xml = oxml;
 				}
 			}

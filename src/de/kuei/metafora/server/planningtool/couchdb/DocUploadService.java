@@ -9,8 +9,8 @@ import com.fourspaces.couchdb.ViewResults;
 
 public class DocUploadService {
 
-	public static String tomcatserver = "https://metafora.ku-eichstaett.de";
-	public static String server = "metafora.ku-eichstaett.de";
+	public static String tomcatserver = "https://metafora-project.info";
+	public static String server = "metafora-project.info";
 	public static String user = "user";
 	public static String password = "password";
 
